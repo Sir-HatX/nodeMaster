@@ -7,11 +7,11 @@ const config = require('./config');
 const fs = require('fs');
 const handlers = require('./lib/handlers')
 
-// var _data = require('./lib/data');
+var _data = require('./lib/data');
 
-// _data.delete('test','newFile',function(err){
-//     console.log("There was an error ",err );
-// });
+_data.create('users','profile',{'name':'Kamande John','age':23},function(err){
+    console.log("There was an error ",err );
+});
 
 
 //HTTP server instance
@@ -24,8 +24,8 @@ httpServer.listen(config.http,()=>{
 });
 
 var httpsServerOptions = {
-    key : fs.readFileSync('./https/server.key'),
-    cert : fs.readFileSync('./https/server.cert')
+    key : fs.readFileSync("app/https/server.key"),
+    cert : fs.readFileSync("app/https/server.cert")
 };
 //HTTPS server instance
 const httpsServer = https.createServer(httpsServerOptions,(req, res)=>{
